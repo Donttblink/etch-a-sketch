@@ -1,2 +1,7 @@
 
+
+.gridSquare {
+  min-width: 10px;
+  min-height: 10px;
+  border: 1px solid red;
 }
