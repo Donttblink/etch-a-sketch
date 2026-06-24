@@ -34,6 +34,7 @@ let funkyColor = document.querySelector("#randomColors");
 
 funkyColor.addEventListener("click", () => {
   funky = !funky;
+  funkyColor.textContent = funky ? "Funky ON" : "Funky OFF";
 });
 
 container.addEventListener("mouseover", (e) => {
