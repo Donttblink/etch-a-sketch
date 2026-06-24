@@ -18,6 +18,20 @@ gridDraw(gridSize);
 const gridRedraw = document.querySelector("#newGrid");
 
 gridRedraw.addEventListener("click", () => {
-  const size = prompt("Enter grid size (1-100):");
+  let size;
+  while (true) {
+    const input = prompt("Enter grid size (1-100):");
+    if (input === null) return;
+    size = Number(input);
+    if (size >= 1 && size <= 100) break;
+    alert("Please enter a NUMBER between 1 and 100");
+  }
+  container.innerHTML = "";
   gridDraw(size);
+});
+
+container.addEventListener("mouseover", (e) => {
+  if (e.target.classList.contains("gridSquare")) {
+    e.target.style.backgroundColor = "black";
+  }
 });
