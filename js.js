@@ -1,4 +1,5 @@
 const container = document.querySelector("#boxContainer");
+
 let gridSize = 16;
 
 function gridDraw(gridSize) {
@@ -13,3 +14,11 @@ function gridDraw(gridSize) {
 }
 
 gridDraw(gridSize);
+
+const gridRedraw = document.querySelector("#newGrid");
+
+
+gridRedraw.addEventListener("click", () => {
+  const size = prompt("Enter grid size (1-100):");
+});
+

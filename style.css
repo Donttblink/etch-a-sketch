@@ -20,12 +20,12 @@ justify-content:center;
   width: 640px;
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
   
 
 }
 
 .gridSquare {
-  
   border: 1px solid red;
   box-sizing: border-box;
 }
