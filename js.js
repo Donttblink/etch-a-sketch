@@ -33,6 +33,8 @@ gridRedraw.addEventListener("click", () => {
 container.addEventListener("mouseover", (e) => {
   if (e.target.classList.contains("gridSquare")) {
     e.target.style.backgroundColor = "black";
+    //randomly generate a different color for background
+    //create a gradual opacity increase that goes from 10 percent to 100 percent
   }
 });
 
@@ -43,3 +45,4 @@ clearDrawing.addEventListener("click", () => {
     cell.style.backgroundColor = "";
   });
 });
+
