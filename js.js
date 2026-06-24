@@ -1,7 +1,7 @@
 const container = document.querySelector("#boxContainer");
 
 let gridSize = 16;
-
+let funky = false;
 function gridDraw(gridSize) {
   for (let i = 0; i < gridSize ** 2; i++) {
     const square = document.createElement("div");
@@ -30,13 +30,29 @@ gridRedraw.addEventListener("click", () => {
   gridDraw(size);
 });
 
+let funkyColor = document.querySelector("#randomColors");
+
+funkyColor.addEventListener("click", () => {
+  funky = !funky;
+});
+
 container.addEventListener("mouseover", (e) => {
-  if (e.target.classList.contains("gridSquare")) {
+  if (!e.target.classList.contains("gridSquare")) return;
+
+  if (funky) {
+    e.target.style.backgroundColor = randomColor();
+  } else {
     e.target.style.backgroundColor = "black";
-    //randomly generate a different color for background
-    //create a gradual opacity increase that goes from 10 percent to 100 percent
   }
 });
+
+function randomColor() {
+  const hue = Math.floor(Math.random() * 360);
+  const saturation = 70;
+  const lightness = 50;
+
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+}
 
 const clearDrawing = document.querySelector("#clearGrid");
 
@@ -45,4 +61,3 @@ clearDrawing.addEventListener("click", () => {
     cell.style.backgroundColor = "";
   });
 });
-
