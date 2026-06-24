@@ -9,17 +9,23 @@
   
   
 }
+.drawArea{
+padding: 20px 100px;
+display:flex;
+justify-content:center;
+}
 
-#container {
-  display:flex;
+#boxContainer {
+  height: 640px;
+  width: 640px;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  
 
 }
 
 .gridSquare {
-  min-width: 50px;
-  min-height: 50px;
+  
   border: 1px solid red;
+  box-sizing: border-box;
 }

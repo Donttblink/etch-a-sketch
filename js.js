@@ -1,14 +1,15 @@
-const container = document.querySelector("#container");
+const container = document.querySelector("#boxContainer");
 let gridSize = 16;
 
-
-function gridDraw (gridSize) {
-  for (let i = 0; i < gridSize ** 2; i++) { 
+function gridDraw(gridSize) {
+  for (let i = 0; i < gridSize ** 2; i++) {
     let square = document.createElement("div");
     square.classList.add("gridSquare");
-    container.appendChild(square);    
+    square.style.width = `calc(100% / ${gridSize}`;
+    square.style.height = `calc(100% / ${gridSize}`;
 
+    container.appendChild(square);
   }
-};
+}
 
 gridDraw(gridSize);
