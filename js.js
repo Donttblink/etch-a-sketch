@@ -35,3 +35,11 @@ container.addEventListener("mouseover", (e) => {
     e.target.style.backgroundColor = "black";
   }
 });
+
+const clearDrawing = document.querySelector("#clearGrid");
+
+clearDrawing.addEventListener("click", () => {
+  document.querySelectorAll(".gridSquare").forEach((cell) => {
+    cell.style.backgroundColor = "";
+  });
+});
