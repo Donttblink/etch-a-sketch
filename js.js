@@ -30,7 +30,7 @@ gridRedraw.addEventListener("click", () => {
   gridDraw(size);
 });
 
-let funkyColor = document.querySelector("#randomColors");
+const funkyColor = document.querySelector("#randomColors");
 
 funkyColor.addEventListener("click", () => {
   funky = !funky;
