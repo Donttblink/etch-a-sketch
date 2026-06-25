@@ -40,17 +40,24 @@ funkyColor.addEventListener("click", () => {
 container.addEventListener("mouseover", (e) => {
   if (!e.target.classList.contains("gridSquare")) return;
 
-  if (funky) {
+  if (e.target.classList.contains("filled")) {
+    for (let j = 0; j > 10; j++) {
+      e.target.style.saturation += 2;
+      e.target.style.lightness += 2;
+    }
+  } else if (funky) {
     e.target.style.backgroundColor = randomColor();
+    e.target.classList.add("filled");
   } else {
     e.target.style.backgroundColor = "black";
+    e.target.classList.add("filled");
   }
 });
 
 function randomColor() {
   const hue = Math.floor(Math.random() * 360);
   const saturation = 70;
-  const lightness = 50;
+  const lightness = 60;
 
   return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
@@ -60,5 +67,6 @@ const clearDrawing = document.querySelector("#clearGrid");
 clearDrawing.addEventListener("click", () => {
   document.querySelectorAll(".gridSquare").forEach((cell) => {
     cell.style.backgroundColor = "";
+    cell.classList.remove("filled");
   });
 });
