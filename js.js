@@ -39,34 +39,31 @@ funkyColor.addEventListener("click", () => {
 
 container.addEventListener("mouseover", (e) => {
   if (!e.target.classList.contains("gridSquare")) return;
+  
+  const cell = e.target;
 
-  if (e.target.classList.contains("filled")) {
-    for (let j = 0; j > 10; j++) {
-      e.target.style.saturation += 2;
-      e.target.style.lightness += 2;
-    }
-  } else if (funky) {
-    e.target.style.backgroundColor = randomColor();
-    e.target.classList.add("filled");
+  let count = Number(cell.dataset.hovers) || 0;
+  if (count >= 10) return;
+
+  count++;
+  cell.dataset.hovers = count;
+  const opacity = count / 10;
+  if (funky) {
+  if (!cell.dataset.hue) {
+    cell.dataset.hue = Math.floor(Math.random() * 360);
+  }
+  cell.style.backgroundColor = `hsla(${cell.dataset.hue}, 70%, 60%, ${opacity})`;  
   } else {
-    e.target.style.backgroundColor = "black";
-    e.target.classList.add("filled");
+    cell.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
   }
 });
-
-function randomColor() {
-  const hue = Math.floor(Math.random() * 360);
-  const saturation = 70;
-  const lightness = 60;
-
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
 
 const clearDrawing = document.querySelector("#clearGrid");
 
 clearDrawing.addEventListener("click", () => {
   document.querySelectorAll(".gridSquare").forEach((cell) => {
     cell.style.backgroundColor = "";
-    cell.classList.remove("filled");
+    delete cell.dataset.hovers;
+    delete cell.dataset.hue;
   });
 });
